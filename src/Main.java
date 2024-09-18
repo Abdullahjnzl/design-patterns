@@ -13,6 +13,8 @@ import structural.decorator.SMSNotificationDecorator;
 import structural.facade.OrderFacade;
 import structural.flyweight.Circle;
 import structural.flyweight.ShapeFactory;
+import structural.proxy.Image;
+import structural.proxy.ProxyImage;
 
 
 public class Main {
@@ -157,23 +159,34 @@ public class Main {
 //        combinedNotification.send();
 
         // using facade design pattern
-        System.out.println("\nusing facade design pattern");
-        OrderFacade orderFacade = new OrderFacade();
+//        System.out.println("\nusing facade design pattern");
+//        OrderFacade orderFacade = new OrderFacade();
+//
+//        orderFacade.placeOrder("Laptop", 1, "Credit Card", 1200.00);
+//        System.out.println("\n");
+//        orderFacade.placeOrder("Headphones", 2, "PayPal", 200.00);
+//
+//        //using flyweight design pattern
+//        System.out.println("\nusing flyweight design pattern");
+//
+//        for (int i = 0; i < 20; i++) {
+//            Circle circle = (Circle) ShapeFactory.getCircle(getRandomColor());
+//            circle.setX(getRandomX());
+//            circle.setY(getRandomY());
+//            circle.setRadius(100);
+//            circle.draw();
+//        }
 
-        orderFacade.placeOrder("Laptop", 1, "Credit Card", 1200.00);
-        System.out.println("\n");
-        orderFacade.placeOrder("Headphones", 2, "PayPal", 200.00);
+        // using proxy design pattern
+        Image image = new ProxyImage("test_image.jpg");
 
-        //using flyweight design pattern
-        System.out.println("\nusing flyweight design pattern");
+        // Image is loaded and displayed for the first time
+        System.out.println("First display call:");
+        image.display();
 
-        for (int i = 0; i < 20; i++) {
-            Circle circle = (Circle) ShapeFactory.getCircle(getRandomColor());
-            circle.setX(getRandomX());
-            circle.setY(getRandomY());
-            circle.setRadius(100);
-            circle.draw();
-        }
+        // Image is already loaded, so it is directly displayed
+        System.out.println("\nSecond display call:");
+        image.display();
 
     }
 
